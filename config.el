@@ -79,27 +79,8 @@
 ;; set default coding system to utf-8
 (set-default-coding-systems 'utf-8)
 
-;; add apx_core
-(projectile-add-known-project "/home/mvj784/msi/devspace/apx/apx_core")
-;; add gh_logs
-(projectile-add-known-project "/home/mvj784/logs")
-;; add ssp_matrixssl
-(projectile-add-known-project "/home/mvj784/msi/devspace/apx/ssp_matrixssl")
-
-;; add org notes to projectile
-(projectile-add-known-project "/home/mvj784/org")
-
-;; add scripts to projectile
-(projectile-add-known-project "/home/mvj784/msi/devspace/help_scripts")
-
-;; gcp_xcmp
-(projectile-add-known-project "/home/mvj784/msi/devspace/apx/gcp_xcmp")
-
 ;; practical common lisp
-(projectile-add-known-project "/home/mvj784/practical_common_lisp")
-
-;; set path to clangd
-;; (setq lsp-clients-clangd-executable "/home/mvj784/clangd_17.0.3/bin/clangd")
+(projectile-add-known-project "~/devspace/practical_common_lisp")
 
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
@@ -123,9 +104,6 @@
 (push '(c-mode . c-ts-mode) major-mode-remap-alist)
 (push '(c++-mode . c++-ts-mode) major-mode-remap-alist)
 (push '(c-or-c++-mode . c-or-c++-ts-mode) major-mode-remap-alist)
-
-;; override c# mode to tresitter variant
-(push '(c-sharp-mode . c-sharp-ts-mode) major-mode-remap-alist)
 
 ;; bind % to move between matching parentheses
 (defun goto-match-paren (arg)
@@ -332,3 +310,11 @@ Comments:
 (setq-default indent-tabs-mode nil)
 (setq-default tab-wdith 4)
 (setq indent-line-function 'insert-tab)
+
+(map! :after sly
+      :mode sly-mode
+      :localleader
+      :prefix "r"
+      :desc "Open Repo" "o" #'sly-mrepl)
+(map! :leader
+      :desc "Open Eshell" "e" #'eshell)

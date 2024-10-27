@@ -50,7 +50,7 @@
 ;; (unpin! t)
 ;;
 ;; (package! omnisharp)
-(package! exec-path-from-shell)
+;; (package! exec-path-from-shell)
 
 ;; git-blame
 (package! blamer
