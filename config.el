@@ -107,8 +107,9 @@
 
 ;; bind % to move between matching parentheses
 (defun goto-match-paren (arg)
-  "Go to the matching parenthesis if on parenthesis AND last command is a
-movement command, otherwise insert %, vi style of % jumping to matching brace."
+  "Go to the matching parenthesis if on parenthesis & last command is for movement.
+In other cases, insert %, vi style of % jumping to matching brace.
+ARG is the parenthesis the function is going to match"
   (interactive "p")
   (message "%s" last-command)
   (if (not (memq last-command '(
