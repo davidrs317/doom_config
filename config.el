@@ -308,7 +308,7 @@ Comments:
 )))
 
 (setq-default indent-tabs-mode nil)
-(setq-default tab-wdith 4)
+(setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
 
 (map! :after sly
@@ -318,3 +318,12 @@ Comments:
       :desc "Open Repo" "o" #'sly-mrepl)
 (map! :leader
       :desc "Open Eshell" "e" #'eshell)
+
+(map! :leader
+      (:prefix ("r" . "remote connection")
+       :desc "Open telnet connection" "t" #'telnet
+       :desc "Open FTP connection" "f" #'ftp))
+
+(map! :leader
+      :prefix "n"
+      :desc "Change agenda todo state" "s" #'org-agenda-todo)
