@@ -95,6 +95,11 @@
 (after! lsp-clangd (set-lsp-priority! 'clangd 2))
 (require 'treesit)
 
+(setq treesit-language-source-alist
+      '((cpp "https://github.com/tree-sitter/tree-sitter-cpp" "v0.22.0")))
+(setq treesit-language-source-alist
+      '((c "https://github.com/tree-sitter/tree-sitter-c")))
+
 ;; turn off auto comment thingy
 (eval-after-load 'cc-mode
   '(progn
@@ -326,3 +331,17 @@ Comments:
       :desc "Open Repo" "o" #'sly-mrepl)
 (map! :leader
       :desc "Open Eshell" "e" #'eshell)
+
+(map! :leader
+      (:prefix ("r" . "remote connection")
+               :desc "Open telnet connection" "t" #'telnet
+               :desc "Open FTP connection" "f" #'ftp))
+
+(map! :leader
+      :desc "Change todo state" "d" #'org-agenda-todo)
+
+(map! :leader
+      :prefix "n"
+      :desc "Change agenda todo state" "s" #'org-agenda-todo)
+
+(setq c-ts-mode-indent-style 'bsd)
